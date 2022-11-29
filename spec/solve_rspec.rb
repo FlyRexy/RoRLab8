@@ -6,7 +6,9 @@ RSpec.describe HomeController, type: :controller do
     it 'should return right values' do
       arr1 = ['1 4 9', '1']
       i = 0
-      expect(HomeController.solve('1 4 9 3 1')).to eq [arr1, i]
+      a = HomeController.new
+      a.init
+      expect(a.solve('1 4 9 3 1')).to eq [arr1, i]
     end
   end
   describe 'GET index' do
@@ -32,7 +34,7 @@ RSpec.describe HomeController, type: :request do
   context 'notice message test' do
     it 'return notice message' do
       get '/home/about?num=3&arr=1&commit=Result'
-      expect(flash[:alert]).to eq('Неправильный ввод')
+      expect(flash[:alert]).to eq('Заданное количество элементов не совпадает с реальным')
     end
   end
 end
